@@ -21,40 +21,6 @@ let hue = 0;
 let direction = true;
 
 
-// GENERAL DRAW FUNCTION
-////////////////////////
-
-// function draw(e) {
-//   if(!isDrawing) return
-//   console.log(e);
-//   ctx.beginPath();
-//   // ctx.lineWidth = hue
-//   // start from
-//   ctx.moveTo(lastX, lastY)
-//   // line color
-//   ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`;
-//   // go to
-//   ctx.lineTo(e.offsetX, e.offsetY)
-//   ctx.stroke();
-
-//   // lastX = e.offsetX;
-//   // lastY = e.offsetY;
-
-//   [lastX, lastY] = [e.offsetX, e.offsetY]
-
-//   hue++;
-//   if (hue >= 360) {
-//     hue = 0;
-//   }
-//   if (ctx.lineWidth >= 50 || ctx.lineWidth <= 1) {
-//     direction = !direction;
-//   }
-//   if (direction) {
-//     ctx.lineWidth++
-//   } else {
-//     ctx.lineWidth--
-//   }
-// }
 
 function drawRect(e) {
   // ctx.rotate((45 * Math.PI) / 180);
@@ -118,12 +84,6 @@ function drawTriangle(e) {
   ctx.fill();
 
 
-  
-
-
-
-  
-  
 }
 
 // drawEllipse
@@ -153,19 +113,7 @@ canvas.addEventListener('click', drawTriangle)
 canvas.addEventListener('mousedown', (e) => {
   console.log(e.clientX, e.clientY)
 })
-// canvas.addEventListener('click', drawCircle)
-// canvas.addEventListener('click', drawSquare)
 
-// canvas.addEventListener('mousemove', draw)
-// // mouse down ? draw
-// canvas.addEventListener('mousedown', (e) => {
-//   isDrawing = true;
-//   [lastX, lastY] = [e.offsetX, e.offsetY]
-// });
-// // mouse up ? stop drawing
-// canvas.addEventListener('mouseup', () => isDrawing = false)
-// // mnouse out of screen ? stop drawing
-// // canvas.addEventListener('mouseout', ()=> isDrawing = false)
 canvas.addEventListener('dblclick', () => {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 })
