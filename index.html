@@ -6,7 +6,31 @@
 </head>
 <body>
   <aside>
-    <div>hey</div>
+    <form>
+      <fieldset>
+        <legend>Options</legend>
+        <label for="color">Shape Color</label>
+        <input type="color" name="color" id="color">
+        <label for="rotation">Rotate Shape</label>
+        <input type="range" name="rotation" id="rotation" value="4" step="1" min="0" max="8">
+        <label for="shape">Select Shape Type</label>
+        <select name="shapes" id="shapes">
+          <option value="square">Square</option>
+          <option value="rectangle">Rectangle</option>
+          <option value="triangle">Triangle</option>
+          <option value="circle">Circle</option>
+          <option value="ellipse">Ellipse</option>
+          <option value="pentagon">Pentagon</option>
+          <option value="hexagon">Hexagon</option>
+          <option value="heptagon">Heptagon</option>
+          <option value="octagon">Octagon</option>
+          <option value="rhombus">Rhombus</option>
+          <option value="trapezoid">Trapezoid</option>
+        </select>
+        <label for="size">Shape Size</label>
+        <input type="number" value="100" min="100" max="1000" step="100">
+      </fieldset>
+    </form>
   </aside>
 <canvas id="canvas" width="650" height="550">
 </canvas>
@@ -27,8 +51,8 @@
     right: 0;
     margin-right: 20px;
     margin-top: 20px;
-    width: 10rem;
-    height: 10rem;
+    /* width: 14rem;
+    height: 14rem; */
     background: grey;
     z-index: 2;
   }
