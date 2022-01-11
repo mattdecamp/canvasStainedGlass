@@ -1,85 +1,84 @@
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
+// select shape type
+const shapes = document.getElementById("shapes");
+// base size for each shape
+const size = 100;
+const stroke = 5;
 
+// canvas size
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
+// draw area properties
 ctx.strokeStyle = "blue";
 ctx.lineJoin = "round";
 ctx.lineCap = "round";
-ctx.lineWidth = 5;
+ctx.lineWidth = stroke;
 
-// ctx.fill();
-
-let isDrawing = false;
-let lastX = 0;
-let lastY = 0;
-let hue = 0;
-let direction = true;
+////////////////////
+// Shape Drawing Functions
+////////////////////
 
 function drawRect(e) {
   // ctx.rotate((45 * Math.PI) / 180);
-  const rectWidth = 150;
-  const rectHeight = 100;
-  let x = e.clientX - rectWidth / 2;
-  let y = e.clientY - rectHeight / 2;
+  const rectHeight = size*1.7;
+  const rectWidth = rectHeight + rectHeight * 0.5;
+  const x = e.clientX - rectWidth / 2;
+  const y = e.clientY - rectHeight / 2;
 
   ctx.beginPath();
   ctx.fillRect(x, y, rectWidth, rectHeight);
   ctx.fill();
 }
 
+// drawSquare
+////////////////////
+
 function drawSquare(e) {
-  // ctx.rect(350, 20, 100, 100);
-  const squareWidth = 100;
-  const squareHeight = 100;
-  let x = e.clientX - squareWidth / 2;
-  let y = e.clientY - squareHeight / 2;
+  const sqSize = size * 1.7;
+  const x = e.clientX - sqSize / 2;
+  const y = e.clientY - sqSize / 2;
   ctx.beginPath();
-  // ctx.rotate((45 * Math.PI) / 180);
-  ctx.fillRect(x, y, squareWidth, squareHeight);
+  ctx.fillRect(x, y, sqSize, sqSize);
   ctx.fill();
 }
 
+// drawCircle
+////////////////////
+
 function drawCircle(e) {
   ctx.beginPath();
-  ctx.arc(e.clientX, e.clientY, 50, 0, 2 * Math.PI);
+  ctx.arc(e.clientX, e.clientY, size*.85, 0, 2 * Math.PI);
   ctx.fill();
 }
 
 // drawTriangle
+////////////////////
 
-function drawTriangle(e) {
-  const mouseX = e.clientX;
-  const mouseY = e.clientY;
-  const side = 200;
-  const height = side * Math.cos(Math.PI / 6);
-  // console.log("Height:" + height)
-  // Calculate center of Triangle
-  console.log("X:" + mouseX, "Y:" + mouseY);
-  console.log("Height:" + height);
-  const centerY = height * (2 / 3);
-  const centerX = side / 2;
-  console.log(centerX, centerY);
-  // draw triangle
-  ctx.beginPath();
-  ctx.moveTo(mouseX, mouseY);
-  ctx.lineTo(mouseX + side / 2, mouseY + height);
-  ctx.lineTo(mouseX - side / 2, mouseY + height);
+// function drawTriangle(e) {
+//   const mouseX = e.clientX;
+//   const mouseY = e.clientY;
+//   const side = 200;
+//   const height = side * Math.cos(Math.PI / 6);
+//   // console.log("Height:" + height)
+//   // Calculate center of Triangle
+//   console.log("X:" + mouseX, "Y:" + mouseY);
+//   console.log("Height:" + height);
+//   const centerY = height * (2 / 3);
+//   const centerX = side / 2;
+//   console.log(centerX, centerY);
+//   // draw triangle
+//   ctx.beginPath();
+//   ctx.moveTo(mouseX, mouseY);
+//   ctx.lineTo(mouseX + side / 2, mouseY + height);
+//   ctx.lineTo(mouseX - side / 2, mouseY + height);
 
-  // trying to get it to draw from center
-
-  // ctx.moveTo(mouseX, mouseY);
-  // ctx.lineTo(mouseX, mouseY - height);
-  // ctx.lineTo(mouseX + side/2, mouseY + height);
-  // ctx.lineTo(mouseX - side/2, mouseY + height);
-  // ctx.lineTo(mouseX, mouseY - height);
-
-  ctx.closePath();
-  ctx.fill();
-}
+//   ctx.closePath();
+//   ctx.fill();
+// }
 
 // drawEllipse
-//////////////
+////////////////////
 
 function drawEllipse(e) {
   const ellipseRadiusX = 50;
@@ -101,6 +100,8 @@ function drawEllipse(e) {
 }
 
 // drawTrapezoid()
+////////////////////
+
 function drawTrapezoid(e) {
   const rectWidth = 150;
   const rectHeight = 100;
@@ -119,6 +120,8 @@ function drawTrapezoid(e) {
 }
 
 // drawRhombus()
+////////////////////
+
 function drawRhombus(e) {
   const rhombusW = 100;
   const rhombusH = 200;
@@ -135,11 +138,10 @@ function drawRhombus(e) {
 }
 
 // DRAW POLYGON FUNCTION
-////////////////////////
+////////////////////
 
 function drawPolygon(x, y, sides) {
-  console.log(x,y)
-  const size = 100;
+  console.log(x, y);
   ctx.beginPath();
   ctx.moveTo(x + size * Math.cos(0), y + size * Math.sin(0));
 
@@ -154,6 +156,16 @@ function drawPolygon(x, y, sides) {
 }
 
 // drawPentagon()
+////////////////////
+
+
+function drawTriangle(e) {
+  const sides = 3,
+    x = e.clientX,
+    y = e.clientY;
+  drawPolygon(x, y, sides);
+}
+
 function drawPentagon(e) {
   const sides = 5,
     x = e.clientX,
@@ -162,6 +174,7 @@ function drawPentagon(e) {
 }
 
 // drawHexagon()
+////////////////////
 
 function drawHexagon(e) {
   const sides = 6,
@@ -171,7 +184,9 @@ function drawHexagon(e) {
 }
 
 // drawHeptagon()
-function drawHeptagon() {
+////////////////////
+
+function drawHeptagon(e) {
   const sides = 7,
     x = e.clientX,
     y = e.clientY;
@@ -179,23 +194,49 @@ function drawHeptagon() {
 }
 
 // drawOctagon()
+////////////////////
 
-function drawOctagon() {
+function drawOctagon(e) {
   const sides = 8,
     x = e.clientX,
     y = e.clientY;
   drawPolygon(x, y, sides);
 }
 
+// drawShape
+////////////////////
 
+function drawShape(e) {
+  if (shapes.value === "triangle") {
+    drawTriangle(e);
+  } else if (shapes.value === "square") {
+    drawSquare(e);
+  } else if (shapes.value === "rectangle") {
+    drawRect(e);
+  } else if (shapes.value === "circle") {
+    drawCircle(e);
+  } else if (shapes.value === "ellipse") {
+    drawEllipse(e);
+  } else if (shapes.value === "pentagon") {
+    drawPentagon(e);
+  } else if (shapes.value === "hexagon") {
+    drawHexagon(e);
+  } else if (shapes.value === "heptagon") {
+    drawHeptagon(e);
+  } else if (shapes.value === "octagon") {
+    drawOctagon(e);
+  } else if (shapes.value === "rhombus") {
+    drawRhombus(e);
+  } else {
+    drawTrapezoid(e);
+  }
+}
 
-//
+// Event Listeners
 
-canvas.addEventListener("click", drawHexagon);
-canvas.addEventListener("mousedown", (e) => {
-  console.log(e.clientX, e.clientY);
-});
-
+// draw shapes on click
+canvas.addEventListener("click", drawShape);
+// clear canvas on double click
 canvas.addEventListener("dblclick", () => {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 });
