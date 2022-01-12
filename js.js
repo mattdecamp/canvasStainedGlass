@@ -3,17 +3,21 @@ const ctx = canvas.getContext("2d");
 // select shape type
 const shapes = document.getElementById("shapes");
 // base size for each shape
-const size = 100;
-const stroke = 5;
+const sizeInput = document.getElementById("size");
+console.log(sizeInput.value)
+let size = 100;
+const color = document.getElementById("color");
+const stroke = document.getElementById("stroke");
 
 // canvas size
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 // draw area properties
-ctx.strokeStyle = "blue";
 ctx.lineJoin = "round";
 ctx.lineCap = "round";
-ctx.lineWidth = stroke;
+ctx.lineWidth = 10;
+ctx.strokeStyle = "silver";
+ctx.fillStyle = "pink";
 
 ////////////////////
 // Shape Drawing Functions
@@ -21,13 +25,14 @@ ctx.lineWidth = stroke;
 
 function drawRect(e) {
   // ctx.rotate((45 * Math.PI) / 180);
-  const rectHeight = size*1.7;
+  const rectHeight = size * 1.7;
   const rectWidth = rectHeight + rectHeight * 0.5;
   const x = e.clientX - rectWidth / 2;
   const y = e.clientY - rectHeight / 2;
 
   ctx.beginPath();
-  ctx.fillRect(x, y, rectWidth, rectHeight);
+  ctx.rect(x, y, rectWidth, rectHeight);
+  ctx.stroke();
   ctx.fill();
 }
 
@@ -39,7 +44,8 @@ function drawSquare(e) {
   const x = e.clientX - sqSize / 2;
   const y = e.clientY - sqSize / 2;
   ctx.beginPath();
-  ctx.fillRect(x, y, sqSize, sqSize);
+  ctx.rect(x, y, sqSize, sqSize);
+  ctx.stroke();
   ctx.fill();
 }
 
@@ -48,7 +54,8 @@ function drawSquare(e) {
 
 function drawCircle(e) {
   ctx.beginPath();
-  ctx.arc(e.clientX, e.clientY, size*.85, 0, 2 * Math.PI);
+  ctx.arc(e.clientX, e.clientY, size * 0.85, 0, 2 * Math.PI);
+  ctx.stroke();
   ctx.fill();
 }
 
@@ -96,6 +103,7 @@ function drawEllipse(e) {
     ellipseStartAngle,
     ellipseEndAngle
   );
+  ctx.stroke();
   ctx.fill();
 }
 
@@ -116,6 +124,7 @@ function drawTrapezoid(e) {
   ctx.lineTo(x - rectWidth / 4, y - rectHeight / 2);
   ctx.lineTo(x + rectWidth / 2, y - rectHeight / 2);
   // ctx.fillRect(x, y, rectWidth, rectHeight);
+  ctx.stroke();
   ctx.fill();
 }
 
@@ -134,6 +143,7 @@ function drawRhombus(e) {
   ctx.lineTo(x, y + rhombusH / 2);
   ctx.lineTo(x - rhombusW / 2, y);
   ctx.lineTo(x, y - rhombusH / 2);
+  ctx.stroke();
   ctx.fill();
 }
 
@@ -150,14 +160,14 @@ function drawPolygon(x, y, sides) {
       x + size * Math.cos((i * 2 * Math.PI) / sides),
       y + size * Math.sin((i * 2 * Math.PI) / sides)
     );
+    ctx.stroke();
+    ctx.fill();
   }
 
-  ctx.stroke();
 }
 
 // drawPentagon()
 ////////////////////
-
 
 function drawTriangle(e) {
   const sides = 3,
@@ -239,4 +249,17 @@ canvas.addEventListener("click", drawShape);
 // clear canvas on double click
 canvas.addEventListener("dblclick", () => {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
+});
+// update color value upon change
+color.addEventListener("change", () => {
+  ctx.fillStyle = color.value;
+});
+// update stroke size upon change
+stroke.addEventListener("input", () => {
+  ctx.lineWidth = stroke.value;
+});
+// update shape size upon change
+sizeInput.addEventListener("input", () => {
+  console.log(sizeInput.value)
+  size = sizeInput.value;
 });
