@@ -5,12 +5,14 @@
   <title>Canvas Shapes</title>
 </head>
 <body>
-  <aside>
+  <aside id="toolbar">
     <form>
       <fieldset>
         <legend>Options</legend>
         <label for="color">Shape Color</label>
         <input type="color" name="color" id="color">
+        <label for="stroke">Shape Stroke</label>
+        <input type="number" name="stroke" id="stroke" value="10">
         <label for="rotation">Rotate Shape</label>
         <input type="range" name="rotation" id="rotation" value="4" step="1" min="0" max="8">
         <label for="shape">Select Shape Type</label>
@@ -28,7 +30,7 @@
           <option value="trapezoid">Trapezoid</option>
         </select>
         <label for="size">Shape Size</label>
-        <input type="number" value="100" min="100" max="1000" step="100">
+        <input type="number" id="size" value="100" min="25" max="250" step="25">
       </fieldset>
     </form>
   </aside>
