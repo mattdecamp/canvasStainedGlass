@@ -4,18 +4,20 @@ const ctx = canvas.getContext("2d");
 const shapes = document.getElementById("shapes");
 // base size for each shape
 const sizeInput = document.getElementById("size");
-console.log(sizeInput.value)
 let size = 100;
+// color and stroke
 const color = document.getElementById("color");
 const stroke = document.getElementById("stroke");
-
+// rotation
+const rotationInput = document.getElementById("rotation");
+let rotation = 0;
 // canvas size
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
-// draw area properties
+// shape style properties and defaults
 ctx.lineJoin = "round";
 ctx.lineCap = "round";
-ctx.lineWidth = 10;
+ctx.lineWidth = 20;
 ctx.strokeStyle = "silver";
 ctx.fillStyle = "pink";
 
@@ -24,13 +26,14 @@ ctx.fillStyle = "pink";
 ////////////////////
 
 function drawRect(e) {
-  // ctx.rotate((45 * Math.PI) / 180);
   const rectHeight = size * 1.7;
   const rectWidth = rectHeight + rectHeight * 0.5;
   const x = e.clientX - rectWidth / 2;
   const y = e.clientY - rectHeight / 2;
-
   ctx.beginPath();
+  ctx.translate(e.clientX, e.clientY);
+  ctx.rotate((rotation * Math.PI) / 180);
+  ctx.translate(-e.clientX, -e.clientY);
   ctx.rect(x, y, rectWidth, rectHeight);
   ctx.stroke();
   ctx.fill();
@@ -44,6 +47,9 @@ function drawSquare(e) {
   const x = e.clientX - sqSize / 2;
   const y = e.clientY - sqSize / 2;
   ctx.beginPath();
+  ctx.translate(e.clientX, e.clientY);
+  ctx.rotate((rotation * Math.PI) / 180);
+  ctx.translate(-e.clientX, -e.clientY);
   ctx.rect(x, y, sqSize, sqSize);
   ctx.stroke();
   ctx.fill();
@@ -54,46 +60,27 @@ function drawSquare(e) {
 
 function drawCircle(e) {
   ctx.beginPath();
+  ctx.translate(e.clientX, e.clientY);
+  ctx.rotate((rotation * Math.PI) / 180);
+  ctx.translate(-e.clientX, -e.clientY);
   ctx.arc(e.clientX, e.clientY, size * 0.85, 0, 2 * Math.PI);
   ctx.stroke();
   ctx.fill();
 }
 
-// drawTriangle
-////////////////////
-
-// function drawTriangle(e) {
-//   const mouseX = e.clientX;
-//   const mouseY = e.clientY;
-//   const side = 200;
-//   const height = side * Math.cos(Math.PI / 6);
-//   // console.log("Height:" + height)
-//   // Calculate center of Triangle
-//   console.log("X:" + mouseX, "Y:" + mouseY);
-//   console.log("Height:" + height);
-//   const centerY = height * (2 / 3);
-//   const centerX = side / 2;
-//   console.log(centerX, centerY);
-//   // draw triangle
-//   ctx.beginPath();
-//   ctx.moveTo(mouseX, mouseY);
-//   ctx.lineTo(mouseX + side / 2, mouseY + height);
-//   ctx.lineTo(mouseX - side / 2, mouseY + height);
-
-//   ctx.closePath();
-//   ctx.fill();
-// }
-
 // drawEllipse
 ////////////////////
 
 function drawEllipse(e) {
-  const ellipseRadiusX = 50;
-  const ellipseRadiusY = 75;
+  const ellipseRadiusX = size / 2;
+  const ellipseRadiusY = size / 2 + size * 0.5;
   const ellipseRotation = 0;
   const ellipseStartAngle = 0;
   const ellipseEndAngle = Math.PI * 2;
   ctx.beginPath();
+  ctx.translate(e.clientX, e.clientY);
+  ctx.rotate((rotation * Math.PI) / 180);
+  ctx.translate(-e.clientX, -e.clientY);
   ctx.ellipse(
     e.clientX,
     e.clientY,
@@ -111,11 +98,10 @@ function drawEllipse(e) {
 ////////////////////
 
 function drawTrapezoid(e) {
-  const rectWidth = 150;
-  const rectHeight = 100;
+  const rectWidth = size * 2;
+  const rectHeight = size * 2 * (2 / 3);
   let x = e.clientX - 14;
   let y = e.clientY;
-
   ctx.beginPath();
   ctx.moveTo(x, y);
   ctx.lineTo(x + rectWidth / 2, y - rectHeight / 2);
@@ -123,7 +109,6 @@ function drawTrapezoid(e) {
   ctx.lineTo(x - rectWidth / 2, y + rectHeight / 2);
   ctx.lineTo(x - rectWidth / 4, y - rectHeight / 2);
   ctx.lineTo(x + rectWidth / 2, y - rectHeight / 2);
-  // ctx.fillRect(x, y, rectWidth, rectHeight);
   ctx.stroke();
   ctx.fill();
 }
@@ -132,8 +117,8 @@ function drawTrapezoid(e) {
 ////////////////////
 
 function drawRhombus(e) {
-  const rhombusW = 100;
-  const rhombusH = 200;
+  const rhombusW = size;
+  const rhombusH = size * 2;
   let x = e.clientX;
   let y = e.clientY;
   ctx.beginPath();
@@ -154,7 +139,6 @@ function drawPolygon(x, y, sides) {
   console.log(x, y);
   ctx.beginPath();
   ctx.moveTo(x + size * Math.cos(0), y + size * Math.sin(0));
-
   for (let i = 1; i <= sides; i += 1) {
     ctx.lineTo(
       x + size * Math.cos((i * 2 * Math.PI) / sides),
@@ -163,7 +147,6 @@ function drawPolygon(x, y, sides) {
     ctx.stroke();
     ctx.fill();
   }
-
 }
 
 // drawPentagon()
@@ -240,9 +223,12 @@ function drawShape(e) {
   } else {
     drawTrapezoid(e);
   }
+  ctx.setTransform(1, 0, 0, 1, 0, 0);
 }
 
+////////////////////
 // Event Listeners
+////////////////////
 
 // draw shapes on click
 canvas.addEventListener("click", drawShape);
@@ -260,6 +246,12 @@ stroke.addEventListener("input", () => {
 });
 // update shape size upon change
 sizeInput.addEventListener("input", () => {
-  console.log(sizeInput.value)
+  console.log(sizeInput.value);
   size = sizeInput.value;
+});
+// update rotation upon change
+rotationInput.addEventListener("input", () => {
+  console.log(rotationInput.value);
+  rotation = rotationInput.value;
+  console.log(rotation);
 });
