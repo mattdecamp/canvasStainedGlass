@@ -1,0 +1,28 @@
+{
+  "name": "html-canvas-shape-playground",
+  "version": "1.0.0",
+  "description": "A blank HTML Canvas to play with Shapes",
+  "main": "scripts.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mattdecamp/canvasStainedGlass.git"
+  },
+  "keywords": [
+    "html",
+    "canvas"
+  ],
+  "author": "Matt DeCamp",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mattdecamp/canvasStainedGlass/issues"
+  },
+  "homepage": "https://github.com/mattdecamp/canvasStainedGlass#readme",
+  "devDependencies": {
+    "@11ty/eleventy": "^1.0.0",
+    "uglifycss": "^0.0.29",
+    "uglifyjs": "^2.4.11"
+  }
+}
