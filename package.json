@@ -7,8 +7,9 @@
     "eleventy:dev": "cross-env ELEVENTY_ENV=development npx @11ty/eleventy --serve",
     "eleventy:prod": "cross-env ELEVENTY_ENV=production npx @11ty/eleventy --serve",
     "scss": "node-sass -o src/includes/css src/styles/main.scss",
+    "watch:css": "onchange 'src/styles/' -- npm run scss",
     "uglify": "uglifyjs src/js/scripts.js -c -o src/js/scripts.min.js",
-    "start": "run-p eleventy:dev scss"
+    "start": "run-p eleventy:dev watch:css"
   },
   "repository": {
     "type": "git",
@@ -32,6 +33,7 @@
     "html-minifier": "^4.0.0",
     "node-sass": "^7.0.1",
     "npm-run-all": "^4.1.5",
+    "onchange": "^7.1.0",
     "uglifyjs": "^2.4.11"
   }
 }
