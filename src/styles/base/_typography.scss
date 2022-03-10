@@ -1,0 +1,16 @@
+body {
+  font-family: var(--font-primary);
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+
+legend {
+  font-size: var(--s4);
+}
+
+input, select {
+  padding: 0.15ch;
+  font-weight: 400;
+  color: var(--color-text-primary);
+  text-align: right;
+}
