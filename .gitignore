@@ -1,2 +1,4 @@
 node_modules
 .gitattributes
+dist
+.DS_Store
