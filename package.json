@@ -9,7 +9,8 @@
     "scss": "node-sass -o src/includes/css src/styles/main.scss",
     "watch:css": "onchange 'src/styles/' -- npm run scss",
     "uglify": "uglifyjs src/js/scripts.js -c -o src/js/scripts.min.js",
-    "start": "run-p eleventy:dev watch:css"
+    "start": "run-p eleventy:dev watch:css",
+    "production": "run-p eleventy:prod watch:css uglify"
   },
   "repository": {
     "type": "git",
