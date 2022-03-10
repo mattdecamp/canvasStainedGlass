@@ -5,7 +5,7 @@
   "main": "scripts.js",
   "scripts": {
     "eleventy:dev": "cross-env ELEVENTY_ENV=development npx @11ty/eleventy --serve",
-    "eleventy:prod": "cross-env ELEVENTY_ENV=production npx @11ty/eleventy --serve",
+    "eleventy:prod": "cross-env ELEVENTY_ENV=production npx @11ty/eleventy",
     "scss": "node-sass -o src/includes/css src/styles/main.scss",
     "watch:css": "onchange 'src/styles/' -- npm run scss",
     "uglify": "uglifyjs src/js/scripts.js -c -o src/js/scripts.min.js",
