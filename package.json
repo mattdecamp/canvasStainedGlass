@@ -4,7 +4,11 @@
   "description": "A blank HTML Canvas to play with Shapes",
   "main": "scripts.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "eleventy:dev": "cross-env ELEVENTY_ENV=development npx @11ty/eleventy --serve",
+    "eleventy:prod": "cross-env ELEVENTY_ENV=production npx @11ty/eleventy --serve",
+    "scss": "node-sass -o src/includes/css src/styles/main.scss",
+    "uglify": "uglifyjs src/js/scripts.js -c -o src/js/scripts.min.js",
+    "start": "run-p eleventy:dev scss"
   },
   "repository": {
     "type": "git",
@@ -22,7 +26,12 @@
   "homepage": "https://github.com/mattdecamp/canvasStainedGlass#readme",
   "devDependencies": {
     "@11ty/eleventy": "^1.0.0",
-    "uglifycss": "^0.0.29",
+    "clean-css": "^5.2.2",
+    "cross-env": "^7.0.3",
+    "eleventy-plugin-svg-sprite": "^1.2.2",
+    "html-minifier": "^4.0.0",
+    "node-sass": "^7.0.1",
+    "npm-run-all": "^4.1.5",
     "uglifyjs": "^2.4.11"
   }
 }
