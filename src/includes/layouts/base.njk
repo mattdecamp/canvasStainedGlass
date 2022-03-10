@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ site.title }}</title>
+  <link rel="stylesheet" href="https://use.typekit.net/vzz4jkt.css">
+  {% set css %}
+			{% include "css/main.css" %}
+  {% endset %}
+  <style>
+    {{ css | cssmin | safe }}
+  </style>
+</head>
+<body>
+  {% include "partials/toolbar.njk" %}
+  {% include "partials/canvas.njk" %}
+  
+    {% svgsprite %}
+    {% svg "github", "svg-github" %}
+  
+
+<script src="./js/scripts.js"></script>
+</body>
+</html>
