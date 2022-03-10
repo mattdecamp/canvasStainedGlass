@@ -39,7 +39,7 @@
   ],
   "sizeHeading": "Size",
   "colorHeading": "Color",
-  "shapeColorDefault": "var(--color-shape-default)",
+  "shapeColorDefault": "#1E90FF",
   "strokeHeading": "Stroke",
   "rotationHeading": "Rotation",
   "rotationSub": "(degrees)",
