@@ -1,9 +1,59 @@
-aside {
+/* Toolbar */
+
+#toolbar {
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 2ch;
+  right: 2ch;
+  width: 32ch;
   margin-right: 20px;
   margin-top: 20px;
-  background: grey;
+  background-color: var(--color-toolbar-background);
+  border-radius: 20px;
   z-index: 2;
+}
+
+#toolbar__form {
+  padding: var(--s-2);
+  & fieldset {
+    display: flex;
+    flex-direction: column;
+    border: 0;
+  }
+}
+
+legend {
+  -webkit-text-fill-color: var(--color-toolbar-background); /* Will override color (regardless of order) */
+  -webkit-text-stroke-width: 0.05ch;
+  -webkit-text-stroke-color: var(--color-text-primary);
+  stroke: blue;
+  text-decoration: underline;
+  text-decoration-thickness: 0.1ex;
+}
+
+#toolbar__instructions {
+  margin-top: var(--s-3);
+  text-align: right;
+}
+
+/* Tools */
+
+#toolbar__tools {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5ch;
+  font-size: var(--s1);
+}
+.toolbar__field {
+  display: flex;
+  justify-content: space-between;
+  & label[for="rotation"] {
+    display: flex;
+    flex-direction: column;
+    & span {
+      font-size: var(--s-1);
+    }
+  }
+  & input[type=number] {
+    width: 5ch;
+  }
 }
