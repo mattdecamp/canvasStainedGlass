@@ -18,8 +18,8 @@ canvas.height = window.innerHeight;
 ctx.lineJoin = "round";
 ctx.lineCap = "round";
 ctx.lineWidth = 20;
-ctx.strokeStyle = "silver";
-ctx.fillStyle = "pink";
+ctx.strokeStyle = "darkgrey";
+ctx.fillStyle = "dodgerblue";
 
 ////////////////////
 // Shape Drawing Functions
@@ -104,6 +104,9 @@ function drawTrapezoid(e) {
   let y = e.clientY;
   ctx.beginPath();
   ctx.moveTo(x, y);
+  ctx.translate(e.clientX, e.clientY);
+  ctx.rotate((rotation * Math.PI) / 180);
+  ctx.translate(-e.clientX, -e.clientY);
   ctx.lineTo(x + rectWidth / 2, y - rectHeight / 2);
   ctx.lineTo(x + rectWidth / 1.3, y + rectHeight / 2);
   ctx.lineTo(x - rectWidth / 2, y + rectHeight / 2);
@@ -123,6 +126,9 @@ function drawRhombus(e) {
   let y = e.clientY;
   ctx.beginPath();
   ctx.moveTo(x, y);
+  ctx.translate(e.clientX, e.clientY);
+  ctx.rotate((rotation * Math.PI) / 180);
+  ctx.translate(-e.clientX, -e.clientY);
   ctx.lineTo(x, y - rhombusH / 2);
   ctx.lineTo(x + rhombusW / 2, y);
   ctx.lineTo(x, y + rhombusH / 2);
@@ -138,6 +144,9 @@ function drawRhombus(e) {
 function drawPolygon(x, y, sides) {
   console.log(x, y);
   ctx.beginPath();
+  ctx.translate(x, y);
+  ctx.rotate((rotation * Math.PI) / 180);
+  ctx.translate(-x, -y);
   ctx.moveTo(x + size * Math.cos(0), y + size * Math.sin(0));
   for (let i = 1; i <= sides; i += 1) {
     ctx.lineTo(
@@ -145,6 +154,7 @@ function drawPolygon(x, y, sides) {
       y + size * Math.sin((i * 2 * Math.PI) / sides)
     );
     ctx.stroke();
+    
     ctx.fill();
   }
 }
