@@ -13,7 +13,7 @@ module.exports = function (eleventyConfig) {
   const isProduction = process.env.ELEVENTY_ENV === "production";
   // html min only in production
   if (isProduction) {
-    config.addTransform("htmlmin", htmlMinTransform);
+    eleventyConfig.addTransform("htmlmin", htmlMinTransform);
   }
   // FILTERS //
   // Clean CSS and minify
