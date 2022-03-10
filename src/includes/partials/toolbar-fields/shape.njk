@@ -1,0 +1,8 @@
+<div class="toolbar__field">
+  <label for="shape">{{ toolbar.typeHeading }}</label>
+  <select name="shapes" id="shapes">
+    {%- for type in toolbar.types -%}
+    <option value="{{ type.name }}">{{ type.name }}</option>
+    {%- endfor -%}
+  </select>
+</div>
