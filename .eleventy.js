@@ -7,8 +7,6 @@ module.exports = function (eleventyConfig) {
   // Passthroughs
   eleventyConfig.addPassthroughCopy("src/js");
   eleventyConfig.addPassthroughCopy("src/assets");
-  // Watch these on build
-  eleventyConfig.addWatchTarget("./src/styles/");
   // TRANSFORMS //
   // minify HTML
   const htmlMinTransform = require("./src/transforms/html-min.js");
