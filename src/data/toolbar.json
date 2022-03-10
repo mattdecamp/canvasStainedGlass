@@ -1,0 +1,47 @@
+{
+  "heading": "Shape Options",
+  "typeHeading": "Type",
+  "types": [
+    {
+      "name": "square"
+    },
+    {
+      "name": "rectangle"
+    },
+    {
+      "name": "triangle"
+    },
+    {
+      "name": "circle"
+    },
+    {
+      "name": "ellipse"
+    },
+    {
+      "name": "pentagon"
+    },
+    {
+      "name": "hexagon"
+    },
+    {
+      "name": "heptagon"
+    },
+    {
+      "name": "octagon"
+    },
+    {
+      "name": "rhombus"
+    },
+    {
+      "name": "trapezoid"
+    }
+    
+  ],
+  "sizeHeading": "Size",
+  "colorHeading": "Color",
+  "shapeColorDefault": "var(--color-shape-default)",
+  "strokeHeading": "Stroke",
+  "rotationHeading": "Rotation",
+  "rotationSub": "(degrees)",
+  "instructions": "double-click to clear canvas"
+}
