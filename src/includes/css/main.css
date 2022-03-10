@@ -371,6 +371,27 @@ template {
 [hidden] {
   display: none; }
 
+:root {
+  --font-primary: "Henriette", serif;
+  --color-background: #009989;
+  --color-toolbar-background: #f5f5f5;
+  --color-text-primary: #656565;
+  --color-text-secondary: #7c7c7c;
+  --color-shape-default: #397fdb;
+  /* MODULAR SPACING */
+  --ratio: 1.2;
+  --s-5: calc(var(--s-4) / var(--ratio));
+  --s-4: calc(var(--s-3) / var(--ratio));
+  --s-3: calc(var(--s-2) / var(--ratio));
+  --s-2: calc(var(--s-1) / var(--ratio));
+  --s-1: calc(var(--s0) / var(--ratio));
+  --s0: 1.125rem;
+  --s1: calc(var(--s0) * var(--ratio));
+  --s2: calc(var(--s1) * var(--ratio));
+  --s3: calc(var(--s2) * var(--ratio));
+  --s4: calc(var(--s3) * var(--ratio));
+  --s5: calc(var(--s4) * var(--ratio)); }
+
 body {
   background-color: var(--color-background);
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 100 100'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23e2f169' fill-opacity='0.81'%3E%3Cpath opacity='.5' d='M96 95h4v1h-4v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9zm-1 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9z'/%3E%3Cpath d='M6 5V0H5v5H0v1h5v94h1V6h94V5H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); }
@@ -378,16 +399,71 @@ body {
 canvas {
   position: relative; }
 
+body {
+  font-family: var(--font-primary);
+  font-weight: 700;
+  color: var(--color-text-primary); }
+
+legend {
+  font-size: var(--s4); }
+
+input, select {
+  padding: 0.15ch;
+  font-weight: 400;
+  color: var(--color-text-primary);
+  text-align: right; }
+
 /* Font Styles */
 /* Component Styles */
-aside {
+/* Toolbar */
+#toolbar {
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 2ch;
+  right: 2ch;
+  width: 32ch;
   margin-right: 20px;
   margin-top: 20px;
-  background: grey;
+  background-color: var(--color-toolbar-background);
+  border-radius: 20px;
   z-index: 2; }
+
+#toolbar__form {
+  padding: var(--s-2); }
+  #toolbar__form fieldset {
+    display: flex;
+    flex-direction: column;
+    border: 0; }
+
+legend {
+  -webkit-text-fill-color: var(--color-toolbar-background);
+  /* Will override color (regardless of order) */
+  -webkit-text-stroke-width: 0.05ch;
+  -webkit-text-stroke-color: var(--color-text-primary);
+  stroke: blue;
+  text-decoration: underline;
+  text-decoration-thickness: 0.1ex; }
+
+#toolbar__instructions {
+  margin-top: var(--s-3);
+  text-align: right; }
+
+/* Tools */
+#toolbar__tools {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5ch;
+  font-size: var(--s1); }
+
+.toolbar__field {
+  display: flex;
+  justify-content: space-between; }
+  .toolbar__field label[for="rotation"] {
+    display: flex;
+    flex-direction: column; }
+    .toolbar__field label[for="rotation"] span {
+      font-size: var(--s-1); }
+  .toolbar__field input[type=number] {
+    width: 5ch; }
 
 .svg-github {
   fill: black; }
