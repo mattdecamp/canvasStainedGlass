@@ -466,4 +466,13 @@ legend {
     width: 5ch; }
 
 .svg-github {
-  fill: black; }
+  fill: var(--color-toolbar-background);
+  height: 5ch;
+  width: 5ch;
+  margin: 2ch; }
+
+#icon__github {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 3; }
