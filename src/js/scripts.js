@@ -12,8 +12,8 @@ const stroke = document.getElementById("stroke");
 const rotationInput = document.getElementById("rotation");
 let rotation = 0;
 // canvas size
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+canvas.width = document.documentElement.clientWidth;
+canvas.height = document.documentElement.clientHeight;
 // shape style properties and defaults
 ctx.lineJoin = "round";
 ctx.lineCap = "round";
