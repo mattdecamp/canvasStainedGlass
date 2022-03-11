@@ -13,12 +13,13 @@
 </head>
 <body>
   {% include "partials/toolbar.njk" %}
+  <div id="icon__github">
+    <a href="{{site.repository}}" title="Check out the repository on GitHub">
+      {% svgsprite %}
+      {% svg "github", "svg-github" %}
+    </a>
+  </div>
   {% include "partials/canvas.njk" %}
-  
-    {% svgsprite %}
-    {% svg "github", "svg-github" %}
-  
-
 <script src="./js/scripts.min.js"></script>
 </body>
 </html>
