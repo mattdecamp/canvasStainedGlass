@@ -1,7 +1,8 @@
 {
   "title": "Stained Glass Canvas",
   "shortDesc": "A Stained Glass Artboard using HTML Canvas",
-  "url": "https://canvas.decamp.dev",
+  "url": "https://canvas-stained-glass.decamp.dev",
+  "repository": "https://github.com/mattdecamp/canvasStainedGlass",
   "authorEmail": "matt@happybear.dev",
   "siteEmail": "matt@happybear.dev",
   "authorHandle": "@mpdecamp",
