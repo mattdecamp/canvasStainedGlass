@@ -142,7 +142,6 @@ function drawRhombus(e) {
 ////////////////////
 
 function drawPolygon(x, y, sides) {
-  console.log(x, y);
   ctx.beginPath();
   ctx.translate(x, y);
   ctx.rotate((rotation * Math.PI) / 180);
@@ -256,12 +255,9 @@ stroke.addEventListener("input", () => {
 });
 // update shape size upon change
 sizeInput.addEventListener("input", () => {
-  console.log(sizeInput.value);
   size = sizeInput.value;
 });
 // update rotation upon change
 rotationInput.addEventListener("input", () => {
-  console.log(rotationInput.value);
   rotation = rotationInput.value;
-  console.log(rotation);
 });
